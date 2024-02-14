@@ -1,5 +1,4 @@
 import pickle
-import cv2
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 from torch.nn.utils.rnn import pad_sequence
@@ -41,9 +40,6 @@ def get_unique_labels(df, label_col_name, multilabel=False):
                 labels_dict[lbl] += 1
     return list(labels_dict.keys()), labels_dict
 
-
-def replace_random_sample(i):
-    return sample(word_bank, 1)[0]
 
 
 class MNLIDataset:
@@ -499,7 +495,7 @@ if __name__ == "__main__":
         train(model, fallacy_ds, optimizer, logger, args.savepath, device, ratio=1, epochs=10,
               positive_weight=int(args.weight))
 
-        model = AutoModelForSequenceClassification.from_pretrained(args.savepath, num_labels=3)
+        model = AutoModelForSequenceClassification.from_pretrained("https://drive.google.com/file/d/1mlmNNk8l1zGHeHw_KNU3jSA2TC453P79/view?usp=drive_link", num_labels=3)
         model.to(device)
     logger.info("starting testing")
     _, _, test_loader = fallacy_ds.get_data_loaders()

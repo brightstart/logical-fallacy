@@ -2,7 +2,6 @@ import os
 import sys
 
 path = os.path.abspath(os.path.join(__file__, "../../../"))
-# path = os.path.abspath(os.pardir)
 sys.path.append(path)  # sys.path.append("../..")
 
 from file_paths import FilePaths
@@ -29,7 +28,7 @@ class Constants(FilePaths):
 
 
 class DataReader:
-    def __init__(self, data_type=['edu', 'climate'][-1]):
+    def __init__(self, data_type=['edu', 'judicial'][-1]):
         self.data_type = data_type
         import pandas as pd
 
@@ -51,7 +50,7 @@ class DataReader:
 
         from efficiency.function import set_seed
         set_seed()
-        if self.data_type == 'climate':
+        if self.data_type == 'judicial':
             df = self.cleaner(self.raw_df, binarize=False)
         else:
             df = self.raw_df
@@ -109,7 +108,7 @@ class DataReader:
     def dist_articles(self):
         from efficiency.function import set_seed
         set_seed()
-        if self.data_type == 'climate':
+        if self.data_type == 'judicial':
             df = self.cleaner(self.raw_df, binarize=False)
         else:
             df = self.raw_df

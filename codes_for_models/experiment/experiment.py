@@ -1,5 +1,4 @@
 import pickle
-import cv2
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 from torch.nn.utils.rnn import pad_sequence
